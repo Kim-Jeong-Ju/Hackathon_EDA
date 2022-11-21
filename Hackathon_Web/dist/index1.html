@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Clustering Information</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="../single.html">Go to Main</a>
+    </nav>
+
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">서울시 강남구 신사동 Information</h1>
+                    <span class="mb-5" style="color: dimgray;">2022/07/12 02:38 ~ 2022/07/13 03:25 약 24시간 기준</span>
+                    <div class="row mt-2">
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card bg-danger text-white mb-4">
+                                <div class="card-body" style="font-weight: bold;">인구 클러스터</div>
+                                <div class="card-body">
+                                    Cluster #1<br>
+                                    전체 연령별 인구수가 적음 - 평균 12479<br>
+                                    등록된 차량수 가장 적음 - 평균 4385.464
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card bg-warning text-white mb-4">
+                                <div class="card-body" style="font-weight: bold; color: black;">SOCAR 수요 예측</div>
+                                <div class="card-body" style="color: black;">
+                                    Cluster#1 내의 실제 차량 수 : 409<br>
+                                    예측된 수요 : 16.63%<br>
+                                    필요한 차량수 : 366
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body" style="font-weight: bold;">SOCAR 현황 평가</div>
+                                <div class="card-body">
+                                    Cluster#1 내의 쏘카존 수 : 112<br>
+                                    차량 과잉 공급중<br>
+                                    총 43대의 잉여 차량 발생 가능
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar me-1"></i>
+                                    신사동의 연령별 인구가 쏘카를 수요할 확률
+                                </div>
+                                <div class="card-body"><canvas id="myBarChart1" width="100%" height="40"></canvas></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-area me-1"></i>
+                                    2시간 단위의 신사동 내 사용 가능한 쏘카 현황
+                                </div>
+                                <div class="card-body"><canvas id="myAreaChart1" width="100%" height="40"></canvas></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            인구 클러스터의 feature
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th>Cluster</th>
+                                        <th>평균 나이</th>
+                                        <th>세대원 1명</th>
+                                        <th>세대원 2명</th>
+                                        <th>세대원 3명</th>
+                                        <th>1인 가구</th>
+                                        <th>2인 가구</th>
+                                        <th>3인 이상 가구</th>
+                                        <th>외국인 가구</th>
+                                        <th>등록 차량 수</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#1 (125개 동)</td>
+                                        <td>35.2 ~ 79.7<br>Average : 44.9</td>
+                                        <td>159 ~ 7297<br>Average : 2890</td>
+                                        <td>74 ~ 2335<br>Average : 1354</td>
+                                        <td>91 ~ 3928<br>Average : 1904</td>
+                                        <td>302 ~ 5581<br>Average : 2070</td>
+                                        <td>230 ~ 2553<br>Average : 1446</td>
+                                        <td>100 ~ 3686<br>Average : 1960</td>
+                                        <td>5 ~ 11166<br>Average : 648</td>
+                                        <td>789 ~ 13272<br>Average : 4385</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo1.js"></script>
+    <script src="assets/demo/chart-bar-demo1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+</body>
+</html>

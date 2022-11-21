@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>동 선택하기</title>
+
+    <link href="dist/css/styles.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div id="layoutError">
+        <div id="layoutError_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="text-center mt-4">
+                                <h1 id="gu-name" class="display-1"></h1>
+                                <p id="dong-name" class="lead"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="dist/js/scripts.js"></script>
+
+    <script>
+        var getData = JSON.parse(localStorage.getItem("data"));
+        console.log(getData.gu);
+        console.log(getData.dong);
+
+        let guName = document.getElementById('gu-name');
+        guName.innerHTML = getData.gu;
+
+        let dongName = document.getElementById('dong-name');
+        let temp = '';
+
+        if(getData.gu === '강남구') {
+            for (let i = 0; i < getData.dong.length; i++) {     // 강남구 신사동 cluster#1
+                temp = temp + '<a href="dist/index1.html" style="text-decoration: none; color: dimgrey;">' + getData.dong[i] + '</a>' + '<br/>';
+            }
+            dongName.innerHTML = temp;
+        } else if (getData.gu === '마포구') {
+            for (let i = 0; i < getData.dong.length; i++) {     // 마포구 상암동 cluster#2
+                temp = temp + '<a href="dist/index2.html" style="text-decoration: none; color: dimgrey;">' + getData.dong[i] + '</a>' + '<br/>';
+            }
+            dongName.innerHTML = temp;
+        } else if (getData.gu === '강북구') {
+            for (let i = 0; i < getData.dong.length; i++) {     // 강북구 수유3동 cluster#3
+                temp = temp + '<a href="dist/index3.html" style="text-decoration: none; color: dimgrey;">' + getData.dong[i] + '</a>' + '<br/>';
+            }
+            dongName.innerHTML = temp;
+        } else {
+            for (let i = 0; i < getData.dong.length; i++) {     // 강서구 가양1동 cluster#4
+                temp = temp + '<a href="dist/index4.html" style="text-decoration: none; color: dimgrey;">' + getData.dong[i] + '</a>' + '<br/>';
+            }
+            dongName.innerHTML = temp;
+        }
+    </script>
+</body>
+</html>
